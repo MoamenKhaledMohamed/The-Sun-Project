@@ -13,7 +13,7 @@ class Donor extends Model
     }
     public function donations()
     {
-        return $this->hasMany('App\Models\Donation');
+        return $this->belongsTo('App\Models\Donation');
     }
 
 }

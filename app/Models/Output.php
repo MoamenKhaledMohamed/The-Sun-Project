@@ -12,7 +12,5 @@ class Output extends Model
     public function needyes()
     {
         return $this->belongsTo('App\Models\Neddy');
-
-
     }
 }

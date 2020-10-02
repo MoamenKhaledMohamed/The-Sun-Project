@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Needy extends Model
 {
-    public function outputs()
-    {
-        return $this->hasMany('App\Models\Output');
-    }
     use HasFactory;
+    
+    public function outputs(){
+
+        return $this->hasMany('App\Models\Output');
+    
+    }
 }

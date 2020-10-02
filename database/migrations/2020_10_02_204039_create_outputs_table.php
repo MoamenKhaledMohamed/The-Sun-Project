@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDonorEventsTable extends Migration
+class CreateOutputsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDonorEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donor_events', function (Blueprint $table) {
+        Schema::create('outputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('donor_id')->unsigned();
-            $table->foreignId('event_id')->unsigned();
+            $table->string('type');
+            $table->integer('amount');
+            $table->foreignId('needy_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDonorEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donor_events');
+        Schema::dropIfExists('outputs');
     }
 }

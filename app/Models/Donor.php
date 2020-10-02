@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donor extends Model
 {
-    public function events()
-    {
-        return $this->belongsToMany('App\Models\Event', 'donor_events');
-    }
-    public function donations()
-    {
-        return $this->belongsTo('App\Models\Donation');
+    use HasFactory;
+
+    public function donations(){
+
+        return $this->hasMany('App\Models\Donation');
+    
     }
 
+    public function events(){
+        
+        return $this->belongsToMany('App\Models\Event');
+    
+    }
 }

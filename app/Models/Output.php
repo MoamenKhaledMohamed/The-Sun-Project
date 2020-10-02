@@ -9,8 +9,10 @@ class Output extends Model
 {
     use HasFactory;
 
-    public function needyes()
-    {
-        return $this->belongsTo('App\Models\Neddy');
+     public function needy(){
+
+        return $this->belongsTo('App\Models\Needy');
+    
     }
+
 }

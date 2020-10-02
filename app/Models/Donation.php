@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Donation extends Model
 {
     use HasFactory;
-    public function donors()
-    {
-        return $this->hasMany('App\Models\Donor');
-    }
 
+    public function donor(){
+
+    return $this->belongsTo('App\Models\Donor');
+    
+   }
 
 }

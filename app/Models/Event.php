@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    public function donor()
-    {
-        return $this->belongsToMany('App\Models\Donor', 'donor_events');
+    use HasFactory;
+    public function donors(){
+
+        return $this->belongsToMany('App\Models\Donor');
+    
     }
 }

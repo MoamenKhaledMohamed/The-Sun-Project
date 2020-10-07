@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Needy;
+use App\Models\User;
 
-class NeedySeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,8 @@ class NeedySeeder extends Seeder
     public function run()
     {
         //
-        Needy::factory()
+        User::factory()
             ->times(20)
-            ->hasOutputs(2)
             ->create();
     }
 }

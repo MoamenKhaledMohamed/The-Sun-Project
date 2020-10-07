@@ -23,6 +23,11 @@ class EventFactory extends Factory
     {
         return [
             //
+            'title' => $this->faker->title,
+            'start' => $this->faker->dateTime(),
+            'end' => $this->faker->dateTime(),
+            'photo' => $this->faker->text,
+            'description' => $this->faker->text,
         ];
     }
 }

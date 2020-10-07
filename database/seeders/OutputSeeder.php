@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Output;
+use App\Models\Needy;
 
 class OutputSeeder extends Seeder
 {
@@ -14,5 +16,9 @@ class OutputSeeder extends Seeder
     public function run()
     {
         //
+        Output::factory()
+              ->times(20)
+              ->for(Needy::factory())
+              ->create();
     }
 }

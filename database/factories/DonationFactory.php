@@ -23,6 +23,8 @@ class DonationFactory extends Factory
     {
         return [
             //
+            'type' => 'payment',
+            'amount' => $this->faker->numberBetween(10,200),
         ];
     }
 }

@@ -23,6 +23,11 @@ class NeedyFactory extends Factory
     {
         return [
             //
+            'first_name' => $this->faker->firstNameMale,
+            'last_name' => $this->faker->firstNameMale,
+            'the_cards_photo' => $this->faker->text,
+            'type' => 'poor',
+            'description' => $this->faker->text
         ];
     }
 }

@@ -2,7 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Resources\User as UserResource;
+use App\Http\Resources\Needy as NeedyResource;
+use App\Models\User;
+use App\Models\Needy;
+use App\Http\Resources\UserCollection;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+
+
+
+Route::get('/users', [UserController::class, 'index']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);

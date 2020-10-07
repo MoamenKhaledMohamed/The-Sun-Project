@@ -23,6 +23,8 @@ class OutputFactory extends Factory
     {
         return [
             //
+            'type' => 'payment',
+            'amount' => $this->faker->numberBetween(100,200),
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDonorEventsTable extends Migration
+class CreateDonorEventTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDonorEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donor_events', function (Blueprint $table) {
+        Schema::create('donor_event', function (Blueprint $table) {
             $table->id();
             $table->foreignId('donor_id')->unsigned();
             $table->foreignId('event_id')->unsigned();

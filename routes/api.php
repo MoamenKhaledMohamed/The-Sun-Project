@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Needy;
 use App\Http\Resources\UserCollection;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,3 +39,4 @@ Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 
 ####################(3)Events##########################
+Route::get('/events', [EventController::class, 'getEventsCommingSoon']);

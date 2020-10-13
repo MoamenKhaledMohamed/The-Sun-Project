@@ -25,10 +25,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-
+###################(1)authentication###########################
 Route::post('/register','App\Http\Controllers\AuthController@register');
 Route::post('/login','App\Http\Controllers\AuthController@login');
+####################End##########################################
 
 
+##################(2)users(normal workers)#################
 Route::get('/users', [UserController::class, 'index']);
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+###################End#####################################
+
+
+####################(3)Events##########################

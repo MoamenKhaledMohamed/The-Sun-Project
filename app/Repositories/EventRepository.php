@@ -17,7 +17,7 @@ class EventRepository extends BaseRepository{
     }
 
     /**
-     * @return events
+     * @return new events
      */
     public function getEventsCommingSoon() {
         $currentDate =  date("Y-m-d");
@@ -25,5 +25,26 @@ class EventRepository extends BaseRepository{
                                 ->orderBy('start', 'asc')
                                 ->get();
         return $events;
+    }
+
+    /**
+     * @return old events
+     */
+    public function getOldEvents() {
+        $currentDate =  date("Y-m-d");
+        $events = $this->model::where('end', '<', $currentDate)
+                                ->orderBy('end', 'asc')
+                                ->get();
+        return $events;
+    }
+
+    /**
+     * @param id this mehtod doesn't use yet
+     * @return number of volunteer
+     */
+    public function getNumVolunteer($id){
+        $event = $this->model::find($id);
+        $num = $event->donors->count();
+        return $num;
     }
 }

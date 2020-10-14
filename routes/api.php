@@ -40,3 +40,4 @@ Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 ####################(3)Events##########################
 Route::get('/events', [EventController::class, 'getEventsCommingSoon']);
+Route::get('/oldevents', [EventController::class, 'getOldEvents']);

@@ -26,18 +26,42 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-###################(1)authentication###########################
+/*
+|--------------------------------------------------------------------------
+Auth Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::post('/register','App\Http\Controllers\AuthController@register');
 Route::post('/login','App\Http\Controllers\AuthController@login');
-####################End##########################################
 
 
-##################(2)users(normal workers)#################
+
+/*
+|--------------------------------------------------------------------------
+User Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/users', [UserController::class, 'index']);
+
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
-###################End#####################################
 
 
-####################(3)Events##########################
+Route::get('/user/{id}/search', [UserController::class, 'search']);
+
+Route::post('/user/store', [UserController::class, 'store']);
+
+Route::get('/user/{id}', [UserController::class, 'show']);
+
+Route::put('/user/{id}/update', [UserController::class, 'update']);
+
+
+/*
+|--------------------------------------------------------------------------
+Events Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/events', [EventController::class, 'getEventsCommingSoon']);
 Route::get('/oldevents', [EventController::class, 'getOldEvents']);

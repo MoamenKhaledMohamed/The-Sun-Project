@@ -4,7 +4,6 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Donor as DonorResource;
-use App\Models\Event as EventModel;
 
 class Event extends JsonResource
 {
@@ -23,7 +22,7 @@ class Event extends JsonResource
             'end' => $this->end,
             'photo' => $this->photo,
             'description' => $this->description,
-            'numVolunteer' => $this->getNumVolunteer($this->id),
+            'numVolunteer' => $this->donors_count,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
@@ -31,13 +30,4 @@ class Event extends JsonResource
         return $array;
     }
 
-    /**
-     * @param id
-     * @return number of volunteer
-     */
-    public function getNumVolunteer ($id){
-        $event = EventModel::find($id);
-        $num = $event->donors->count();
-        return $num;
-    }    
 }

@@ -32,19 +32,11 @@ class EventRepository extends BaseRepository{
      */
     public function getOldEvents() {
         $currentDate =  date("Y-m-d");
-        $events = $this->model::where('end', '<', $currentDate)
+        $events = $this->model::withCount('donors')
+                                ->where('end', '<', $currentDate)
                                 ->orderBy('end', 'asc')
                                 ->get();
         return $events;
     }
 
-    /**
-     * @param id this mehtod doesn't use yet
-     * @return number of volunteer
-     */
-    public function getNumVolunteer($id){
-        $event = $this->model::find($id);
-        $num = $event->donors->count();
-        return $num;
-    }
 }

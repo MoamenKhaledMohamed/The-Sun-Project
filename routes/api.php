@@ -25,10 +25,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-
+/*
+|--------------------------------------------------------------------------
+Auth Routes
+|--------------------------------------------------------------------------
+*/
 Route::post('/register','App\Http\Controllers\AuthController@register');
 Route::post('/login','App\Http\Controllers\AuthController@login');
 
+/*
+|--------------------------------------------------------------------------
+User Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/users', [UserController::class, 'index']);
+
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+Route::get('/user/{id}/search', [UserController::class, 'search']);
+
+Route::post('/user/store', [UserController::class, 'store']);
+
+Route::get('/user/{id}', [UserController::class, 'show']);
+
+Route::put('/user/{id}/update', [UserController::class, 'update']);

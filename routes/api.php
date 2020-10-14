@@ -50,3 +50,12 @@ Route::post('/user/store', [UserController::class, 'store']);
 Route::get('/user/{id}', [UserController::class, 'show']);
 
 Route::put('/user/{id}/update', [UserController::class, 'update']);
+
+
+/*
+|--------------------------------------------------------------------------
+Events Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/events', [EventController::class, 'getEventsCommingSoon']);
+Route::get('/oldevents', [EventController::class, 'getOldEvents']);

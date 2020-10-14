@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Needy;
 use App\Http\Resources\UserCollection;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,8 +31,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Auth Routes
 |--------------------------------------------------------------------------
 */
+
 Route::post('/register','App\Http\Controllers\AuthController@register');
 Route::post('/login','App\Http\Controllers\AuthController@login');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +46,7 @@ User Routes
 Route::get('/users', [UserController::class, 'index']);
 
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
 
 Route::get('/user/{id}/search', [UserController::class, 'search']);
 
@@ -57,5 +62,6 @@ Route::put('/user/{id}/update', [UserController::class, 'update']);
 Events Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/events', [EventController::class, 'getEventsCommingSoon']);
 Route::get('/oldevents', [EventController::class, 'getOldEvents']);

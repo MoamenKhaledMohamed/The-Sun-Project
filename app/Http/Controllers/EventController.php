@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\EventRepository;
 use App\Http\Resources\Event as EventResource;
 use App\Models\Event;
@@ -12,16 +11,16 @@ class EventController extends Controller
      * @var event
      */
     protected $event;
-    
-    /**      
-     * EventController constructor.      
-     *      
+
+    /**
+     * EventController constructor.
+     *
      * @param EventRepository
-     */   
+     */
     public function __construct(EventRepository $event){
         $this->event = $event;
     }
-    
+
     /**
      * @return all events json or not found
      */

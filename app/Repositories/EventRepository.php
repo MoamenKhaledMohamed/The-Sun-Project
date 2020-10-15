@@ -7,11 +7,11 @@ use App\Models\Event;
 
 class EventRepository extends BaseRepository{
 
-    /**      
-     * EventRepository constructor.      
-     *      
-     * @param  Event     
-     */   
+    /**
+     * EventRepository constructor.
+     *
+     * @param  Event
+     */
     public function __construct(Event $event) {
         parent::__construct($event);
     }

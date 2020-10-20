@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Repositories\EventRepository;
 use App\Http\Resources\Event as EventResource;
 use App\Models\Event;
+use Illuminate\Http\EventRequest;
+
 class EventController extends Controller
 {
     /**
@@ -44,4 +46,45 @@ class EventController extends Controller
             ['data' => EventResource::collection($events)]
             , 200);
     }
+
+    public function store(EventRequest $request)
+    {
+        $data = $request->validated();
+
+        $events = $this->event->create($data);
+
+        return response()->json([
+            'user' => new EventResource($events)
+        ], 201);
+    }
+
+
+    public function destroy($id){
+        $this->event->delete($id);
+        return response()->json([], 200);
+
+    }
+
+
+    public function update(EventRequest $request, int $id)
+    {
+
+        $data = $request->validated();
+
+        $events = $this->event->update($id, $data);
+
+        return response()->json([
+            'user' => new EventResource($events)
+        ], 201);
+    }
+
+
+    public function search(string $data)
+    {
+        $events = $this->event->getResult($data);
+        return response()->json([
+            'user' => EventResource::collection($events)
+        ], 200);
+    }
+
 }

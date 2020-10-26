@@ -9,6 +9,7 @@ use App\Models\Needy;
 use App\Http\Resources\UserCollection;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\NeedyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -65,3 +66,14 @@ Events Routes
 
 Route::get('/events', [EventController::class, 'getEventsCommingSoon']);
 Route::get('/oldevents', [EventController::class, 'getOldEvents']);
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+Needy Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/needy/create', [NeedyController::class, 'addNeedyAndOutput']);

@@ -28,7 +28,8 @@ class BaseRepository
      */
     public function create(array $data)
     {
-        $this->model::create($data);
+       $row =  $this->model::create($data);
+       return $row;
     }
 
 

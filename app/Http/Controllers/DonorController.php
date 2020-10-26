@@ -44,7 +44,7 @@ class DonorController extends Controller
     }
 
 
-    public function update(NeedyRequest$request, int $id)
+    public function update(NeedyRequest $request, int $id)
     {
 
         $data = $request->validated();

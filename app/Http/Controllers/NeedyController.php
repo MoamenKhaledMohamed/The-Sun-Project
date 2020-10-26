@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Resources\Needy as NeedyResources;
-use Illuminate\Http\NeedyRequest;
 use App\Repositories\NeedyRepository;
-
+use App\Http\Requests\Needy as NeedyRequest;
 
 class NeedyController extends Controller
 {
@@ -44,7 +43,7 @@ class NeedyController extends Controller
     }
 
 
-    public function update(NeedyRequest$request, int $id)
+    public function update(NeedyRequest $request, int $id)
     {
 
         $data = $request->validated();
@@ -63,6 +62,22 @@ class NeedyController extends Controller
         return response()->json([
             'user' => NeedyResources::collection($needy)
         ], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response json
+     */
+    public function addNeedyAndOutput(NeedyRequest $request){
+
+        // validation
+        $data = $request->validated();
+        // save data in two tables needy and outputs 
+        $needy = $this->needy->addNeedyAndOutput($data);
+        return $needy;
+        // change public array 
+        // return json
+
     }
 
 }

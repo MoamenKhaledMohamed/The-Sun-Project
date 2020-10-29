@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Donor extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function donations(){
 
         return $this->hasMany('App\Models\Donation');
-    
+
     }
 
     public function events(){
-        
+
         return $this->belongsToMany('App\Models\Event');
-    
+
     }
 }

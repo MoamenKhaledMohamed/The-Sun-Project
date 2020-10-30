@@ -59,7 +59,7 @@ class DonorRepository extends BaseRepository
         //check if donor,s email is in databese or not
         $mail = $this->model::where('email', $data['email'])->first();
 if($mail==null) {
-   return "not found";
+   return $mail;
     }
 
 

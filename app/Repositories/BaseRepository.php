@@ -28,8 +28,8 @@ class BaseRepository
      */
     public function create(array $data)
     {
-       $row =  $this->model::create($data);
-       return $row;
+        $row = $this->model::create($data);
+        return $row;
     }
 
 
@@ -78,10 +78,12 @@ class BaseRepository
     {
         if (is_numeric($param)) {
 
-          return  $this->model::find($param);
+            return $this->model::find($param);
 
         } else {
-           return $this->model::where('first_name','like',$param)->get();
+            return $this->model::where('first_name', 'like', $param)->get();
         }
     }
+
+
 }

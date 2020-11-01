@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Needy extends FormRequest
+class Donor extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,23 +23,21 @@ class Needy extends FormRequest
      */
     public function rules()
     {
-        // adde rules to validate the data of outputs
+
         $rules = [
+            "email"           => "required",
             "types.*.type"    => "required|string",
-            "types.*.amount"    => "required|integer",
+            "types.*.amount"    => "required|integer"
 
         ];
 
-         if ($this->path() === 'api/needy/create2') {
+        if ($this->path() === 'api/donor/create2') {
             return $rules;
         }
 
-        // validate the data of needy if it is found
         $rules ["first_name"] = "required | string";
         $rules ["last_name"] = "required | string";
-        $rules ["typeNeedy"] = "required | string";
-        $rules ["description"] = "required | string";
-        $rules ["photo"] = "required | string";
+        $rules ["email"] = "required | email";
 
 
         return $rules;

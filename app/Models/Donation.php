@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Donation extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function donor(){
 
     return $this->belongsTo('App\Models\Donor');
-    
+
    }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\User as UserResource;
@@ -77,3 +78,14 @@ Needy Routes
 */
 
 Route::post('/needy/create', [NeedyController::class, 'addNeedyAndOutput']);
+
+
+/*
+|--------------------------------------------------------------------------
+Donor Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/donor/create2', [DonorController::class, 'addDonation']);
+Route::post('/donor/create', [DonorController::class, 'addDonorAndDonation']);
+

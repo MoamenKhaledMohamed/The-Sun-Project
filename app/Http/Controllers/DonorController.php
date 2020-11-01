@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Resources\Donor as DonorResources;
-use Illuminate\Http\DonorRequest;
+use App\Http\Requests\Donor as DonorRequest;
 use App\Repositories\DonorRepository;
+use Illuminate\Http\JsonResponse;
 
 
 class DonorController extends Controller
@@ -21,7 +22,8 @@ class DonorController extends Controller
      * @param DonorRepository
      */
 
-    public function __construct(DonorRepository $donor){
+    public function __construct(DonorRepository $donor)
+    {
         $this->donor = $donor;
     }
 
@@ -37,14 +39,15 @@ class DonorController extends Controller
     }
 
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $this->donor->delete($id);
         return response()->json([], 200);
 
     }
 
 
-    public function update(NeedyRequest $request, int $id)
+    public function update(DonorRequest $request, int $id)
     {
 
         $data = $request->validated();
@@ -65,5 +68,54 @@ class DonorController extends Controller
         ], 200);
     }
 
-}
 
+
+    /**
+     * @param Request $request
+     * @return JsonResponse json
+     */
+
+    public function addDonation(DonorRequest $request)
+    {
+
+        // validation
+        $data = $request->validated();
+        // save data in two tables donors and donations
+
+        $donor = $this->donor->addDonorDonation($data);
+          if($donor==null)
+              // check whether donor exists or not
+          {
+              // return status code with descriptions
+              return response()->json([
+              'invalidArgument' =>"The value for email in the request body was invalid."
+          ], 400);
+
+          }
+
+        // return data of donor in jason form
+        return response()->json([
+            'user' => new DonorResources($donor)
+        ], 201);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse json
+     */
+
+    public function addDonorAndDonation(DonorRequest $request)
+    {
+        // validation
+        $data = $request->validated();
+
+        // save data in table donations
+        $donor = $this->donor->addDonorAndDonation($data);
+
+        // return data of donor in jason form
+        return response()->json([
+            'user' => new DonorResources($donor)
+        ], 201);
+
+    }
+}
